@@ -15,19 +15,9 @@
 (add-hook 'go-mode-hook '(lambda ()
 			   (local-set-key (kbd "C-c C-k") 'godoc)))
 
-(load "/home/madwind/Dropbox/madwind/golang/project/src/code.google.com/p/go.tools/cmd/oracle/oracle.el")
+(load "/go/src/golang.org/x/tools/cmd/oracle/oracle.el")
 (add-hook 'go-mode-hook 'go-oracle-mode)
 
-
-(add-to-list 'load-path "/home/madwind/Dropbox/madwind/golang/project/src/github.com/dougm/goflymake")
-(require 'go-flymake)
-
-(add-to-list 'load-path "/home/madwind/Dropbox/madwind/golang/project/src/github.com/dougm/goflymake")
-(require 'go-flycheck)
-
-;; (add-hook 'go-mode-hook (lambda ()
-;;   (set (make-local-variable 'company-backends) '(company-go))
-;;   (company-mode)))
 
 (defun my-go-mode-hook ()
   ; Call Gofmt before saving
@@ -36,11 +26,11 @@
       (set (make-local-variable 'compile-command)
            "go build -v -gcflags \"-N -l\" && go test -v && go vet"))
   ; Godef jump key binding
-  ;; (local-set-key (kbd "M-.") 'godef-jump)
-  ;; (setq-default) 
-  ;; (setq tab-width 2) 
-  ;; (setq standard-indent 2) 
-  ;; (setq indent-tabs-mode nil)
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (setq-default) 
+  (setq tab-width 2) 
+  (setq standard-indent 2) 
+  (setq indent-tabs-mode nil)
   (set (make-local-variable 'company-backends) '(company-go))
   (company-mode))
 
